@@ -19,7 +19,8 @@ while cap.isOpened():
         continue
     
     msg = c.req(frame)
-    print(msg)
+    if msg != []:
+      print(msg)
 
     # cv2.imshow( "Feed", frame)
     if cv2.waitKey(1) == ord('q'):
