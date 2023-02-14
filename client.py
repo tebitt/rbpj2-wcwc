@@ -7,7 +7,7 @@ cap = cv2.VideoCapture(0)
 cap.set(3,1280)
 cap.set(4,720)
 
-host = socket.gethostname()
+host = "172.20.10.10"
 port = 10101
 c = CustomSocket(host, port)
 c.clientConnect()

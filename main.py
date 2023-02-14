@@ -8,7 +8,7 @@ import traceback
 model = YOLO("best.pt")
 
 def main():
-    HOST = socket.gethostname()
+    HOST = "172.20.10.10"
     PORT = 10101
 
     server = CustomSocket(HOST, PORT)
