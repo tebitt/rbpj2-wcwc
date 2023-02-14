@@ -1,8 +1,7 @@
 import cv2
 import socket
+import time
 from custom_socket import CustomSocket
-
-model = YOLO("best.pt")
 
 cap = cv2.VideoCapture(0)
 cap.set(3,1280)
@@ -20,6 +19,7 @@ while cap.isOpened():
         continue
     
     msg = c.req(frame)
+    print(msg)
 
     # cv2.imshow( "Feed", frame)
     if cv2.waitKey(1) == ord('q'):
