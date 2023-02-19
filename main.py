@@ -5,10 +5,10 @@ import numpy as np
 import json
 import traceback
 
-model = YOLO("best.pt")
+model = YOLO("wcc_best.pt")
 
 def main():
-    HOST = "172.20.10.10"
+    HOST = "localhost"
     PORT = 10101
 
     server = CustomSocket(HOST, PORT)
