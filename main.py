@@ -5,7 +5,7 @@ import numpy as np
 import json
 import traceback
 
-model = YOLO("wcc_best.pt")
+model = YOLO("best.pt")
 
 def main():
     HOST = "172.20.10.10"
@@ -25,7 +25,7 @@ def main():
 
             data = server.recvMsg(conn)
             frame = np.frombuffer(data, dtype=np.uint8).reshape(720, 1280, 3)
-            res = model.predict(source=frame, conf=0.7, show = True)[0]
+            res = model.predict(source=frame, conf=0.5, show = True)[0]
             Detected = []
             if res.boxes:
                 Detected = []
