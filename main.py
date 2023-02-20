@@ -8,7 +8,7 @@ import traceback
 model = YOLO("wcc_best.pt")
 
 def main():
-    HOST = "localhost"
+    HOST = "172.20.10.10"
     PORT = 10101
 
     server = CustomSocket(HOST, PORT)
@@ -28,9 +28,12 @@ def main():
             res = model.predict(source=frame, conf=0.7, show = True)[0]
             Detected = []
             if res.boxes:
-                for r in res:
+                Detected = []
+                for r in res.boxes:
                     for c in res.boxes.cls:
+                        print(model.names[int(c)])
                         Detected.append(model.names[int(c)])
+                        break
 
             print(Detected)
             server.sendMsg(conn, json.dumps(Detected))
