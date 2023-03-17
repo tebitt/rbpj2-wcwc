@@ -5,10 +5,11 @@ import numpy as np
 import json
 import traceback
 
-model = YOLO("best.pt")
+model = YOLO("wcc_best_3.pt")
 
 def main():
-    HOST = "172.20.10.10"
+   # HOST = "172.20.10.10"
+    HOST = 'localhost'
     PORT = 10101
 
     server = CustomSocket(HOST, PORT)
@@ -21,8 +22,6 @@ def main():
       
       while True:
         try:
-            detected = []
-
             data = server.recvMsg(conn)
             frame = np.frombuffer(data, dtype=np.uint8).reshape(720, 1280, 3)
             res = model.predict(source=frame, conf=0.5, show = True)[0]
@@ -37,6 +36,9 @@ def main():
 
             print(Detected)
             server.sendMsg(conn, json.dumps(Detected))
+            delay = server.recvMsg(conn)
+            print(delay)
+
 
         except Exception as e:
                 traceback.print_exc()
