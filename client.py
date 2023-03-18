@@ -71,7 +71,6 @@ while cap.isOpened():
                delay += Dict[k]*1.5
         delaynum = round(delay)
         delaystr = str(delaynum)
-        c.sock.send(delaystr)
         delaystr = delaystr.encode()
         #arduino.write(delaystr)
         i = delaynum
